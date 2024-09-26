@@ -1,18 +1,21 @@
 [build]
   command = "npm install"
+  publish = "dist"
 
 [build.environment]
   PORT = "6119"
 
 [functions]
-  directory = "functions/"
+  directory = "/"
+  node_bundler = "esbuild"
+  external_node_modules = ["express", "dotenv", "axios", "yargs", "random-int", "node-fetch", "lodash", "body-parser"]
 
 [[redirects]]
   from = "/translate"
-  to = "/functions/index.js"
+  to = "/functions"
   status = 200
 
 [[redirects]]
   from = "/"
-  to = "/functions/index.js"
+  to = "/functions"
   status = 200
